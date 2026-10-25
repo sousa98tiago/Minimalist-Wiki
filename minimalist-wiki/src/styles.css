@@ -1,0 +1,444 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  background: #8ed5e5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #8ed5e5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: #16859b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Overall page */
+
+.wiki {
+  min-height: 100vh;
+  background: #8ed5e5;
+}
+
+/* Header */
+
+.wiki-header {
+  background: #8ed5e5;
+  color: #ffffff;
+}
+
+.wiki-header-inner {
+  width: min(1200px, 94%);
+  min-height: 100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 20px 0;
+}
+
+.wiki-title {
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.wiki-title:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* Navigation */
+
+.wiki-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dropdown-toggle:hover,
+.dropdown:focus-within .dropdown-toggle {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Small arrow */
+
+.dropdown-arrow {
+  width: 7px;
+  height: 7px;
+  margin-top: -4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 150ms ease;
+}
+
+.dropdown:hover .dropdown-arrow,
+.dropdown:focus-within .dropdown-arrow {
+  margin-top: 4px;
+  transform: rotate(225deg);
+}
+
+/* Dropdown panel */
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  right: 0;
+  display: none;
+  min-width: 190px;
+  padding: 5px 0;
+  background: #f1f1f1;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  color: #333333;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+  background: #dddddd;
+  text-decoration: none;
+}
+
+.dropdown-menu a[aria-current="page"] {
+  font-weight: 700;
+}
+
+/* White content area */
+
+.wiki-content {
+  width: min(1200px, 94%);
+  min-height: 500px;
+  margin: 0 auto 32px;
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 12px;
+  background: #ffffff;
+  color: #333333;
+  line-height: 1.8;
+}
+
+.wiki-content h2 {
+  margin-top: 0;
+  color: #292929;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+.wiki-content h3 {
+  margin-top: 30px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.wiki-content p {
+  color: #555555;
+}
+
+.wiki-content li {
+  margin-bottom: 12px;
+}
+
+/* Keyboard accessibility */
+
+.dropdown-toggle:focus-visible,
+.wiki-title:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.dropdown-menu a:focus-visible {
+  outline: 2px solid #16859b;
+  outline-offset: -2px;
+}
+
+/* Smaller screens */
+
+@media (max-width: 700px) {
+  .wiki-header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px 0;
+  }
+
+  .wiki-navigation {
+    justify-content: flex-start;
+    gap: 2px;
+  }
+
+  .dropdown-toggle {
+    padding: 10px;
+  }
+
+  .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+
+  .wiki-content {
+    margin-bottom: 0;
+    border-radius: 10px 10px 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-arrow {
+    transition: none;
+  }
+}
+
+/* Article pages */
+
+.article-page {
+  display: flow-root;
+  overflow: visible;
+}
+
+/* Article title */
+
+.wiki-content.article-page .article-title {
+  margin-bottom: 20px;
+}
+
+/* Infobox on the right */
+
+.article-page .article-infobox {
+  float: right;
+  width: 300px;
+  max-width: 42%;
+  margin: 0 0 24px 28px;
+  padding: 0;
+  border: 1px solid #a2a9b1;
+  border-radius: 3px;
+  background: #f8f9fa;
+  color: #202122;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Infobox title */
+
+.article-page .infobox-title {
+  padding: 12px 10px;
+  background: #dceef5;
+  border-bottom: 1px solid #a2a9b1;
+  color: #202122;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Infobox image */
+
+.article-page .infobox-image {
+  display: block;
+  max-width: calc(100% - 20px);
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  margin: 12px auto;
+  object-fit: contain;
+}
+
+/* Infobox section headings */
+
+.article-page .infobox-section-heading {
+  padding: 7px 10px;
+  background: #dceef5;
+  border-top: 1px solid #a2a9b1;
+  border-bottom: 1px solid #c8dce5;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* One-line information rows */
+
+.article-page .infobox-row {
+  display: grid;
+  grid-template-columns: 42% minmax(0, 1fr);
+  gap: 8px;
+  padding: 8px 10px;
+  margin: 0;
+  border-bottom: 1px solid #dfe3e7;
+  background: #f8f9fa;
+  overflow-wrap: anywhere;
+}
+
+.article-page .infobox-row strong {
+  color: #333333;
+  font-weight: 700;
+}
+
+.article-page .infobox-row span {
+  min-width: 0;
+}
+
+.article-page .infobox-row:last-child {
+  border-bottom: 0;
+}
+
+/* Article text */
+
+.article-page .article-introduction,
+.article-page .article-body {
+  color: #202122;
+  line-height: 1.8;
+}
+
+.article-page .article-introduction {
+  margin-bottom: 24px;
+}
+
+.article-page .article-body h2,
+.article-page .article-body h3 {
+  clear: none;
+  color: #202122;
+}
+
+.article-page .article-body p {
+  color: #333333;
+}
+
+/* Mobile layout */
+
+@media (max-width: 650px) {
+  .article-page .article-infobox {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 24px;
+  }
+}
+
+.article-page .article-infobox {
+  float: right;
+  width: 300px;
+  max-width: 42%;
+  margin: 0 0 24px 28px;
+}
+
+.article-page .article-text {
+  display: block;
+  min-width: 0;
+}
+
+@media (max-width: 650px) {
+  .article-page .article-infobox {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 24px;
+  }
+}
+
+/* Article table of contents */
+
+.article-toc {
+  display: table;
+  max-width: 260px;
+  margin: 0 0 28px;
+  padding: 12px 20px;
+  border: 1px solid #c8ccd1;
+  background: #f8f9fa;
+  color: #202122;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.article-toc-title {
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.article-toc ol {
+  margin: 0;
+  padding-left: 26px;
+}
+
+.article-toc li {
+  margin: 2px 0;
+}
+
+.article-toc .toc-subheading {
+  margin-left: 12px;
+  list-style-type: circle;
+}
+
+.article-toc a {
+  color: #16859b;
+  text-decoration: none;
+}
+
+.article-toc a:hover {
+  text-decoration: underline;
+}
+
+/* Leave room when jumping to a section */
+
+.article-body h2,
+.article-body h3 {
+  scroll-margin-top: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}

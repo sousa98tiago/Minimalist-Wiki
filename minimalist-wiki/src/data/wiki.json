@@ -1,0 +1,30 @@
+{
+  "defaultSeries": "a",
+  "categories": [
+    { "id": "characters", "name": "Characters" },
+    { "id": "locations", "name": "Locations" },
+    { "id": "events", "name": "Events" }
+  ],
+  "series": [
+    {
+      "id": "a",
+      "name": "Series A",
+      "description": "The first series.",
+      "categories": {
+        "characters": ["sa-alice"],
+        "locations": ["enchanted-forest"],
+        "events": ["great-awakening"]
+      }
+    },
+    {
+      "id": "b",
+      "name": "Series B",
+      "description": "The second series.",
+      "categories": {
+        "characters": ["sb-ben"],
+        "locations": [],
+        "events": []
+      }
+    }
+  ]
+}
