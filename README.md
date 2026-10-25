@@ -83,7 +83,7 @@ Example:
 id: alice
 title: Alice
 type: character
-image: /images/alice.jpg
+image: /images/series-a/alice.jpg
 infobox:
   Full Name: Alice
   Gender: ""
