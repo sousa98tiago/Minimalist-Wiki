@@ -83,7 +83,7 @@ Example:
 id: alice
 title: Alice
 type: character
-image: /images/alice.jpg
+image: /images/series-a/alice.jpg
 infobox:
   Full Name: Alice
   Gender: ""
@@ -132,7 +132,7 @@ Place article images in the project's public assets directory and reference them
 For example:
 
 ```yaml
-image: /images/alice.jpg
+image: /images/series-a/alice.jpg
 ```
 
 ### 4. Building for Production

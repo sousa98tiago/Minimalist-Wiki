@@ -1,0 +1,89 @@
+/* =========================================
+   PLEASANTVILLE — LIGHT BLUE THEME
+   ========================================= */
+
+.wiki.theme-pleasantville {
+  --theme-background: #8ed5e5;
+  --theme-surface: #ffffff;
+  --theme-text: #333333;
+  --theme-heading: #292929;
+  --theme-muted: #555555;
+  --theme-link: #16859b;
+  --theme-border: #e5e5e5;
+  --theme-menu: #f1f1f1;
+  --theme-menu-border: #cccccc;
+  --theme-menu-hover: #dddddd;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--theme-text);
+  background: var(--theme-background);
+  min-height: 100vh;
+}
+
+.wiki.theme-pleasantville .wiki-header {
+  background: var(--theme-background);
+  color: #ffffff;
+}
+
+.wiki.theme-pleasantville .wiki-title {
+  color: #ffffff;
+}
+
+.wiki.theme-pleasantville .dropdown-toggle {
+  color: #ffffff;
+}
+
+.wiki.theme-pleasantville .dropdown-toggle:hover,
+.wiki.theme-pleasantville .dropdown:focus-within .dropdown-toggle {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.wiki.theme-pleasantville .dropdown-menu {
+  background: var(--theme-menu);
+  border-color: var(--theme-menu-border);
+}
+
+.wiki.theme-pleasantville .dropdown-menu a {
+  color: var(--theme-text);
+}
+
+.wiki.theme-pleasantville .dropdown-menu a:hover,
+.wiki.theme-pleasantville .dropdown-menu a:focus-visible {
+  background: var(--theme-menu-hover);
+}
+
+.wiki.theme-pleasantville .wiki-content {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  border-color: transparent;
+}
+
+.wiki.theme-pleasantville .wiki-content h2,
+.wiki.theme-pleasantville .wiki-content h3 {
+  color: var(--theme-heading);
+}
+
+.wiki.theme-pleasantville .wiki-content h3 {
+  border-bottom-color: var(--theme-border);
+}
+
+.wiki.theme-pleasantville .wiki-content p {
+  color: var(--theme-muted);
+}
+
+.wiki.theme-pleasantville .wiki-content a,
+.wiki.theme-pleasantville .article-toc a {
+  color: var(--theme-link);
+}
+
+.wiki.theme-pleasantville .article-toc {
+  background: #f8f9fa;
+  border-color: #c8ccd1;
+  color: #202122;
+}
+
+.wiki.theme-pleasantville .article-introduction,
+.wiki.theme-pleasantville .article-body,
+.wiki.theme-pleasantville .article-body p {
+  color: #333333;
+}

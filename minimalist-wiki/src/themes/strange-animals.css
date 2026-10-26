@@ -1,0 +1,133 @@
+/* =========================================
+   STRANGE ANIMALS — HORROR THEME
+   ========================================= */
+
+.wiki.theme-strange-animals {
+  --horror-background: #080808;
+  --horror-surface: #000000;
+  --horror-border: #a61919;
+  --horror-accent: #d32f2f;
+  --horror-text: #f2f2f2;
+  --horror-muted: #cccccc;
+  --horror-menu: #050505;
+  --horror-hover: #202020;
+
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  color: var(--horror-text);
+  background: var(--horror-background);
+  min-height: 100vh;
+}
+
+/* Background and header */
+
+.wiki.theme-strange-animals .wiki-header {
+  background: var(--horror-background);
+  color: var(--horror-text);
+}
+
+.wiki.theme-strange-animals .wiki-title {
+  color: #ffffff;
+}
+
+.wiki.theme-strange-animals .wiki-content {
+  background: var(--horror-surface);
+  color: var(--horror-text);
+  border: 1px solid var(--horror-border);
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+/* Main text */
+
+.wiki.theme-strange-animals .wiki-content h2,
+.wiki.theme-strange-animals .wiki-content h3 {
+  color: var(--horror-text);
+}
+
+.wiki.theme-strange-animals .wiki-content h3 {
+  border-bottom-color: #393030;
+}
+
+.wiki.theme-strange-animals .wiki-content p,
+.wiki.theme-strange-animals .article-introduction,
+.wiki.theme-strange-animals .article-body,
+.wiki.theme-strange-animals .article-body p,
+.wiki.theme-strange-animals .wiki-content li {
+  color: var(--horror-text);
+}
+
+/* Main content links */
+
+.wiki.theme-strange-animals .wiki-content a {
+  color: #eeeeee;
+}
+
+.wiki.theme-strange-animals .wiki-content a:hover {
+  color: #ff7777;
+}
+
+/* Dropdown buttons */
+
+.wiki.theme-strange-animals .dropdown-toggle {
+  color: var(--horror-accent);
+}
+
+.wiki.theme-strange-animals .dropdown-toggle:hover,
+.wiki.theme-strange-animals .dropdown:focus-within .dropdown-toggle {
+  background: rgba(180, 20, 20, 0.12);
+}
+
+/* Dropdown arrow inherits the red button text color */
+
+.wiki.theme-strange-animals .dropdown-arrow {
+  color: var(--horror-accent);
+}
+
+/* Dropdown panel */
+
+.wiki.theme-strange-animals .dropdown-menu {
+  background: var(--horror-menu);
+  border-color: #5c1717;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.wiki.theme-strange-animals .dropdown-menu a {
+  color: #ffffff;
+}
+
+.wiki.theme-strange-animals .dropdown-menu a:hover,
+.wiki.theme-strange-animals .dropdown-menu a:focus-visible {
+  background: var(--horror-hover);
+  color: #ff7777;
+}
+
+.wiki.theme-strange-animals .dropdown-menu a[aria-current="page"] {
+  color: #ff7777;
+}
+
+/* Table of contents */
+
+.wiki.theme-strange-animals .article-toc {
+  background: #101010;
+  border-color: #5c1717;
+  color: var(--horror-text);
+}
+
+.wiki.theme-strange-animals .article-toc a {
+  color: #ffffff;
+}
+
+.wiki.theme-strange-animals .article-toc a:hover {
+  color: #ff7777;
+}
+
+/* Keyboard focus */
+
+.wiki.theme-strange-animals .dropdown-toggle:focus-visible,
+.wiki.theme-strange-animals .wiki-title:focus-visible {
+  outline-color: var(--horror-accent);
+}
+
+.wiki.theme-strange-animals .dropdown-menu a:focus-visible {
+  outline-color: var(--horror-accent);
+}

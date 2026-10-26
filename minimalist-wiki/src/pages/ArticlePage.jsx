@@ -50,6 +50,12 @@ export default function ArticlePage() {
 
   const infobox = article.infobox ?? {};
 
+  const infoboxEntries = Object.entries(infobox).filter(
+    ([, value]) => value !== "" && value != null,
+  );
+
+  const hasInfobox = Boolean(article.image) || infoboxEntries.length > 0;
+
   const firstHeadingIndex = article.content.search(/^#{2,3}\s+/m);
 
   const introduction =
@@ -82,44 +88,50 @@ export default function ArticlePage() {
         <Link to={`/series/${series.id}`}>{series.name} Wiki</Link>
         {" › "}
         {article.title}
+        <br></br>
+        <br></br>
       </div>
 
       <h2 className="article-title">{article.title}</h2>
 
-      <aside className="article-infobox">
-        <div className="infobox-title">{article.title}</div>
+      {hasInfobox && (
+        <aside className="article-infobox">
+          <div className="infobox-title">{article.title}</div>
 
-        {article.image && (
-          <img
-            className="infobox-image"
-            src={article.image}
-            alt={article.imageAlt ?? article.title}
-          />
-        )}
+          {article.image && (
+            <img
+              className="infobox-image"
+              src={article.image}
+              alt={article.imageAlt ?? article.title}
+            />
+          )}
 
-        <div className="infobox-section-heading">
-          {article.type === "character" ? "Identities" : "Information"}
-        </div>
+          {infoboxEntries.length > 0 && (
+            <>
+              <div className="infobox-section-heading">
+                {article.type === "character" ? "Bio" : "Information"}
+              </div>
 
-        {Object.entries(infobox)
-          .filter(([, value]) => value !== "" && value != null)
-          .map(([label, value]) => (
-            <div className="infobox-row" key={label}>
-              <strong>{label}</strong>
-              <span>{String(value)}</span>
-            </div>
-          ))}
+              {infoboxEntries.map(([label, value]) => (
+                <div className="infobox-row" key={label}>
+                  <strong>{label}</strong>
+                  <span>{String(value)}</span>
+                </div>
+              ))}
+            </>
+          )}
 
-        {article.type && (
-          <>
-            <div className="infobox-section-heading">Classification</div>
-            <div className="infobox-row">
-              <strong>Type</strong>
-              <span>{article.type}</span>
-            </div>
-          </>
-        )}
-      </aside>
+          {article.type && (
+            <>
+              <div className="infobox-section-heading">Classification</div>
+              <div className="infobox-row">
+                <strong>Type</strong>
+                <span>{article.type}</span>
+              </div>
+            </>
+          )}
+        </aside>
+      )}
 
       <div className="article-introduction">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
