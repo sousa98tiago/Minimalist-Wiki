@@ -129,18 +129,6 @@ export default function ArticlePage() {
               ))}
             </>
           )}
-
-          {article.type && (
-            <>
-              <div className="infobox-section-heading">
-                {t("classification")}
-              </div>
-              <div className="infobox-row">
-                <strong>{t("type")}</strong>
-                <span>{article.type}</span>
-              </div>
-            </>
-          )}
         </aside>
       )}
 
