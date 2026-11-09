@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 
 import wikiData from "../data/wiki.json";
 import { getArticle } from "../data/articles";
+import { getTranslator } from "../data/translations";
 
 function slugify(text) {
   return text
@@ -36,14 +37,14 @@ export default function ArticlePage() {
 
   const article = getArticle(seriesId, articleId);
 
+  const { t } = getTranslator(
+    series?.language ?? wikiData.generic.defaultLanguage,
+  );
+
   if (!series || !article) {
     return (
       <main className="wiki-content">
-        <h2>Article not found</h2>
-        <p>
-          Check that the Markdown file exists and its ID matches the article ID
-          in the URL.
-        </p>
+        <h2>{t("article-not-found")}</h2>
       </main>
     );
   }
@@ -117,7 +118,7 @@ export default function ArticlePage() {
           {infoboxEntries.length > 0 && (
             <>
               <div className="infobox-section-heading">
-                {article.type === "character" ? "Bio" : "Information"}
+                {article.type === "character" ? t("bio") : t("information")}
               </div>
 
               {infoboxEntries.map(([label, value]) => (
@@ -131,9 +132,11 @@ export default function ArticlePage() {
 
           {article.type && (
             <>
-              <div className="infobox-section-heading">Classification</div>
+              <div className="infobox-section-heading">
+                {t("classification")}
+              </div>
               <div className="infobox-row">
-                <strong>Type</strong>
+                <strong>{t("type")}</strong>
                 <span>{article.type}</span>
               </div>
             </>
@@ -149,7 +152,7 @@ export default function ArticlePage() {
 
       {headings.length > 0 && (
         <nav className="article-toc" aria-label="Table of contents">
-          <div className="article-toc-title">Contents</div>
+          <div className="article-toc-title">{t("contents")}</div>
           <ol>
             {headings.map((heading, index) => (
               <li

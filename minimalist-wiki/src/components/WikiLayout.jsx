@@ -1,7 +1,8 @@
 import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
-
 import { useEffect } from "react";
+
 import wiki from "../data/wiki.json";
+import { getTranslator } from "../data/translations";
 
 const themeFiles = import.meta.glob("../themes/*.css");
 
@@ -13,6 +14,11 @@ export default function WikiLayout() {
 
   // Find the matching series in wiki.json.
   const currentSeries = wiki.series.find((item) => item.id === seriesId);
+
+  // Get translations for the current series language.
+  const { t, category, flag, languageName } = getTranslator(
+    currentSeries?.language ?? wiki.generic.defaultLanguage,
+  );
 
   // Use the selected series theme, or the default theme.
   const theme = currentSeries?.theme ?? "pleasantville";
@@ -38,6 +44,11 @@ export default function WikiLayout() {
         <div className="wiki-header-inner">
           <Link className="wiki-title" to={`/series/${currentSeries.id}`}>
             {currentSeries.name} Wiki
+            <img
+              className="wiki-language-flag"
+              src={`/images/generic/flags/${flag}`}
+              alt={languageName}
+            />
           </Link>
 
           <nav className="wiki-navigation">
@@ -48,7 +59,8 @@ export default function WikiLayout() {
                 type="button"
                 aria-haspopup="true"
               >
-                Series <span className="dropdown-arrow" />
+                {t("series")}
+                <span className="dropdown-arrow" />
               </button>
 
               <div className="dropdown-menu">
@@ -73,18 +85,19 @@ export default function WikiLayout() {
                 type="button"
                 aria-haspopup="true"
               >
-                Explore <span className="dropdown-arrow" />
+                {t("explore")}
+                <span className="dropdown-arrow" />
               </button>
 
               <div className="dropdown-menu">
-                <Link to={`/series/${currentSeries.id}`}>Main page</Link>
+                <Link to={`/series/${currentSeries.id}`}>{t("main-page")}</Link>
 
-                {wiki.categories.map((category) => (
+                {wiki.categories.map((item) => (
                   <Link
-                    key={category.id}
-                    to={`/series/${currentSeries.id}/categories/${category.id}`}
+                    key={item.id}
+                    to={`/series/${currentSeries.id}/categories/${item.id}`}
                   >
-                    {category.name}
+                    {category(item.id)}
                   </Link>
                 ))}
               </div>

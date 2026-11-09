@@ -1,18 +1,81 @@
 {
   "generic": {
-    "defaultPicture": "picture-not-available.png"
+    "defaultPicture": "picture-not-available.png",
+    "defaultLanguage": "en",
+    "translations": [
+      {
+        "languageId": "en",
+        "languageName": "English",
+        "flag": "united-kingdom.svg",
+        "categories": [
+          { "id": "characters", "text": "Characters" },
+          { "id": "locations", "text": "Locations" },
+          { "id": "events", "text": "Events" },
+          { "id": "stories", "text": "Stories" },
+          { "id": "chapter-summaries", "text": "Chapter Summaries" }
+        ],
+        "staticText": [
+          { "id": "welcome", "text": "Welcome to {name} Wiki" },
+          { "id": "explore", "text": "Explore this series" },
+          { "id": "series-not-found", "text": "Series not found." },
+          { "id": "page-not-found", "text": "Page not found." },
+          { "id": "article-not-found", "text": "Article not found." },
+          { "id": "no-entries", "text": "No entries in this category yet." },
+          { "id": "contents", "text": "Contents" },
+          { "id": "bio", "text": "Bio" },
+          { "id": "information", "text": "Information" },
+          { "id": "classification", "text": "Classification" },
+          { "id": "type", "text": "Type" },
+          { "id": "series", "text": "Series" },
+          { "id": "main-page", "text": "Main page" }
+        ]
+      },
+      {
+        "languageId": "pt",
+        "languageName": "Português",
+        "flag": "portugal.svg",
+        "categories": [
+          { "id": "characters", "text": "Personagens" },
+          { "id": "locations", "text": "Lugares" },
+          { "id": "events", "text": "Eventos" },
+          { "id": "stories", "text": "Histórias" },
+          { "id": "chapter-summaries", "text": "Resumos de Capítulos" }
+        ],
+        "staticText": [
+          { "id": "welcome", "text": "Bem-vindo à Wiki de {name}!" },
+          { "id": "explore", "text": "Explora esta série" },
+          { "id": "series-not-found", "text": "Série não encontrada." },
+          { "id": "page-not-found", "text": "Página não encontrada." },
+          { "id": "article-not-found", "text": "Artigo não encontrado." },
+          {
+            "id": "no-entries",
+            "text": "Ainda não existem registos nesta categoria."
+          },
+          { "id": "contents", "text": "Índice" },
+          { "id": "bio", "text": "Biografia" },
+          { "id": "information", "text": "Informações" },
+          { "id": "classification", "text": "Classificação" },
+          { "id": "type", "text": "Tipo" },
+          { "id": "series", "text": "Séries" },
+          { "id": "main-page", "text": "Página principal" }
+        ]
+      }
+    ]
   },
   "defaultSeries": "pleasantville",
   "categories": [
-    { "id": "characters", "name": "Characters" },
-    { "id": "locations", "name": "Locations" },
-    { "id": "events", "name": "Events" }
+    { "id": "characters" },
+    { "id": "locations" },
+    { "id": "events" },
+    { "id": "stories" },
+    { "id": "chapter-summaries" }
   ],
   "series": [
     {
       "id": "pleasantville",
       "name": "Pleasantville",
       "theme": "pleasantville",
+      "language": "pt",
       "description": "Pleasantville is a wholesome place with a variety of interesting creatures. Visitors often describe it as a community rather than a city for a reason. Everyone there is friendly, tolerant, and kind.",
       "categories": {
         "characters": ["char-giraffe"],
@@ -24,6 +87,7 @@
       "id": "strange-animals",
       "name": "Strange Animals",
       "theme": "strange-animals",
+      "language": "en",
       "description": "Strange Animals is an anthology of horror novels currently being written by Tiago Sousa. The writing is similar to The Twilight Zone; it always contains a supernatural element (the strange 'animal') and explores adult concepts through violence, suspense, and mystery.",
       "categories": {
         "characters": ["char-snake", "char-invisible-giraffe"],

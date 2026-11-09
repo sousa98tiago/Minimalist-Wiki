@@ -2,23 +2,30 @@ import { Link, useParams } from "react-router-dom";
 
 import wiki from "../data/wiki.json";
 import { getArticle } from "../data/articles";
+import { getTranslator } from "../data/translations";
 
 export default function CategoryPage() {
   const { seriesId, categorySlug } = useParams();
 
   const series = wiki.series.find((item) => item.id === seriesId);
 
-  const category = wiki.categories.find((item) => item.id === categorySlug);
+  const categoryInfo = wiki.categories.find((item) => item.id === categorySlug);
 
-  if (!series || !category) {
+  if (!series || !categoryInfo) {
+    const { t } = getTranslator(wiki.generic.defaultLanguage);
+
     return (
       <main className="wiki-content">
-        <h2>Page not found</h2>
+        <h2>{t("page-not-found")}</h2>
       </main>
     );
   }
 
-  const articleIds = series.categories?.[category.id] ?? [];
+  const { t, category } = getTranslator(
+    series.language ?? wiki.generic.defaultLanguage,
+  );
+
+  const articleIds = series.categories?.[categoryInfo.id] ?? [];
 
   const entries = articleIds
     .map((id) => getArticle(series.id, id))
@@ -26,10 +33,10 @@ export default function CategoryPage() {
 
   return (
     <main className="wiki-content">
-      <h2>{category.name}</h2>
+      <h2>{category(categoryInfo.id)}</h2>
 
       {entries.length === 0 ? (
-        <p>No entries in this category yet.</p>
+        <p>{t("no-entries")}</p>
       ) : (
         <ul>
           {entries.map((entry) => (

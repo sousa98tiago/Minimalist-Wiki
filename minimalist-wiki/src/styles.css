@@ -429,3 +429,13 @@ body,
 .wiki-content {
   flex: 1 0 auto;
 }
+
+.wiki-language-flag {
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  margin-left: 8px;
+  object-fit: cover;
+  vertical-align: middle;
+  border-radius: 2px;
+}
