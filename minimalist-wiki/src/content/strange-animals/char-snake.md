@@ -1,10 +1,10 @@
 ---
-id: sa-snake
+id: char-snake
 title: Basilisk
 type: character
-image: /images/strange-animals/sa-snake.jpg
 infobox:
   Name: Basilisk
+  image: char-snake.jpg
   Gender: Male
   Age: Potentially eternal
   Diet: Rats
@@ -19,6 +19,7 @@ infobox:
     - The Liar
     - The Father of Lies
     - The Murderer
+  Story: "Persuasive Snake"
 ---
 
 Basilisk is a talking snake with the ability of human speech and reasoning.

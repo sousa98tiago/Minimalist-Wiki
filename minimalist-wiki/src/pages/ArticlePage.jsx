@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import wiki from "../data/wiki.json";
+import wikiData from "../data/wiki.json";
 import { getArticle } from "../data/articles";
 
 function slugify(text) {
@@ -32,7 +32,7 @@ function getHeadingText(children) {
 export default function ArticlePage() {
   const { seriesId, articleId } = useParams();
 
-  const series = wiki.series.find((item) => item.id === seriesId);
+  const series = wikiData.series.find((item) => item.id === seriesId);
 
   const article = getArticle(seriesId, articleId);
 
@@ -51,10 +51,16 @@ export default function ArticlePage() {
   const infobox = article.infobox ?? {};
 
   const infoboxEntries = Object.entries(infobox).filter(
-    ([, value]) => value !== "" && value != null,
+    ([key, value]) => key !== "image" && value !== "" && value != null,
   );
 
-  const hasInfobox = Boolean(article.image) || infoboxEntries.length > 0;
+  const imageFilename = infobox.image;
+
+  const imagePath = imageFilename
+    ? `/images/${seriesId}/${imageFilename}`
+    : `/images/generic/${wikiData.generic.defaultPicture}`;
+
+  const hasInfobox = Boolean(infobox.image) || infoboxEntries.length > 0;
 
   const firstHeadingIndex = article.content.search(/^#{2,3}\s+/m);
 
@@ -98,13 +104,15 @@ export default function ArticlePage() {
         <aside className="article-infobox">
           <div className="infobox-title">{article.title}</div>
 
-          {article.image && (
-            <img
-              className="infobox-image"
-              src={article.image}
-              alt={article.imageAlt ?? article.title}
-            />
-          )}
+          <img
+            className="infobox-image"
+            src={imagePath}
+            alt={article.title}
+            onError={(event) => {
+              event.currentTarget.onerror = null;
+              event.currentTarget.src = `/images/generic/${wikiData.generic.defaultPicture}`;
+            }}
+          />
 
           {infoboxEntries.length > 0 && (
             <>

@@ -1,4 +1,7 @@
 {
+  "generic": {
+    "defaultPicture": "picture-not-available.png"
+  },
   "defaultSeries": "pleasantville",
   "categories": [
     { "id": "characters", "name": "Characters" },
@@ -12,7 +15,7 @@
       "theme": "pleasantville",
       "description": "Pleasantville is a wholesome place with a variety of interesting creatures. Visitors often describe it as a community rather than a city for a reason. Everyone there is friendly, tolerant, and kind.",
       "categories": {
-        "characters": ["pv-giraffe"],
+        "characters": ["char-giraffe"],
         "locations": ["pv-cafe"],
         "events": []
       }
@@ -21,9 +24,9 @@
       "id": "strange-animals",
       "name": "Strange Animals",
       "theme": "strange-animals",
-      "description": "Strange Animals is an anthology of horror novels written by Tiago Sousa. The writing is similar to The Twilight Zone; it always contains a supernatural element (the strange 'animal') and explores adult concepts through violence, suspense, and mystery.",
+      "description": "Strange Animals is an anthology of horror novels currently being written by Tiago Sousa. The writing is similar to The Twilight Zone; it always contains a supernatural element (the strange 'animal') and explores adult concepts through violence, suspense, and mystery.",
       "categories": {
-        "characters": ["sa-snake", "sa-invisible-giraffe"],
+        "characters": ["char-snake", "char-invisible-giraffe"],
         "locations": [],
         "events": ["invisible-giraffe-story"]
       }

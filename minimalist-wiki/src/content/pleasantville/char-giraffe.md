@@ -1,10 +1,10 @@
 ---
-id: pv-giraffe
+id: char-giraffe
 title: Giraffe
 type: character
-image: /images/pleasantville/pv-giraffe.jpg
 infobox:
   Name: Giraffe
+  image: char-giraffe.jpg
   Species: Plush
   Gender: Female
   Age: 30
