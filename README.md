@@ -2,17 +2,22 @@
 
 A minimalist wiki website template built with React and Vite.
 
-Minimalist-Wiki provides a simple way to create and maintain a wiki website without the complexity of traditional wiki platforms. Instead of managing content through an administration panel, users can create and edit articles using Markdown (`.md`) files and update a JSON configuration file to organize the wiki.
+Minimalist-Wiki provides a simple way to create and maintain a wiki website without the complexity of traditional wiki platforms. Instead of managing content through an administration panel, users can create and edit articles using Markdown (`.md`) files and update a JSON configuration file to organize their wiki.
 
 The result is a lightweight, clean, and easy-to-manage website focused on what matters most: the content.
 
 ## Features
 
 - **Markdown-based articles** — Write and maintain articles using simple `.md` files.
-- **JSON-based configuration** — Manage series, categories, and article organization through a JSON file.
-- **Multi-series support** — Organize content into separate series, each with its own articles and categories.
+- **JSON-based configuration** — Manage series, categories, languages, themes, and article organization through a JSON file.
+- **Multi-series support** — Organize content into separate series, each with its own articles, categories, language, and visual theme.
+- **Individual series themes** — Customize the appearance of each series using separate CSS stylesheets.
+- **Multi-language interface** — Automatically display interface labels and category names according to the language assigned to each series.
+- **Language flags** — Display SVG flags alongside the wiki title to indicate the active series language.
+- **Automatic category filtering** — Only display categories containing at least one article in the active series, both on the homepage and in the navigation dropdown.
 - **Automatic table of contents** — Generate clickable contents lists from article headings.
-- **Article infoboxes** — Display structured information, such as character details, alongside article content.
+- **Article infoboxes** — Display structured information, such as character details, alongside article content, including optional images.
+- **Fallback images** — Automatically use a generic placeholder when an article does not have an associated image.
 - **Minimalist design** — A clean interface with little visual clutter, keeping the focus on the content.
 - **No backend required** — Content is stored locally in the project files and bundled into the website.
 - **No user management** — No accounts, roles, permission levels, comments, or administrative systems to maintain.
@@ -68,10 +73,10 @@ For example:
 ```text
 src/
 └── content/
-    ├── series-a/
-    │   └── alice.md
-    └── series-b/
-        └── ben.md
+    ├── pleasantville/
+    │   └── char-giraffe.md
+    └── strange-animals/
+        └── sa-snake.md
 ```
 
 Each article uses YAML frontmatter to define its metadata, followed by the article content in Markdown.
@@ -80,62 +85,341 @@ Example:
 
 ```markdown
 ---
-id: alice
-title: Alice
+id: char-giraffe
+title: Giraffe
 type: character
-image: /images/series-a/alice.jpg
 infobox:
-  Full Name: Alice
-  Gender: ""
+  Name: Giraffe
+  image: char-giraffe.jpg
+  Species: Plush
+  Gender: Female
+  Age: 30
 ---
 
-Alice is a curious adventurer who explores the world.
+**Giraffe** is an inhabitant of Pleasantville who works as a waitress at a local pastry shop.
 
 ## Appearance
 
-Describe the character's appearance here.
+Giraffe is a plush creature covered entirely in soft fur, with an exceptionally gentle texture across her whole body, including her hooves. She occasionally wears a cozy red scarf.
 
 ## Personality
 
-Describe the character's personality here.
+Giraffe is deeply empathetic, compassionate, and emotionally intelligent, making her an exceptional listener who easily connects with others. She has a warm, affectionate communication style, often giving people endearing nicknames such as "friend," "buddy," or affectionate shortened variants of their names (e.g., "Lily" for Lisa or Elisabeth, and "Lulu" for Lucas).
 
-## Information
+However, she struggles significantly with organization. Due to poor planning and a tendency to become easily distracted, she frequently misses appointments, arrives late, and is too embarrassed by the perpetual mess in her home to ever invite guests over.
 
-Add the character's history and role here.
+## Background & Life
+
+Working as a waitress in a pastry shop, Giraffe enjoys her day-to-day employment, though she frequently dreams of a higher education. She aspires to return to school to earn a degree in either Literature or History.
+
+Her home life is shared with her pet Parson Russell Terrier named **Bobby**.
 
 ## Trivia
 
-- Add interesting facts here.
+- **Allergies:** Giraffe is allergic to chocolate.
+- **Sensory Preferences:** She dislikes loud noises and chaotic, noisy environments.
 ```
 
 The metadata controls how the article is identified and displayed. The Markdown body contains the actual article text, headings, lists, and other supported Markdown content.
 
+Article metadata supports:
+
+- `id` — The article's unique identifier.
+- `title` — The article's display title.
+- `type` — The article type, such as `character`, `location`, or `event`.
+- `infobox` — Optional structured information displayed alongside the article.
+
+The `image` property belongs inside `infobox` and contains the image filename, not the full path.
+
 ### 2. Organizing the Wiki
 
-Use the JSON configuration file to define your wiki's series, categories, and article organization.
+Use `src/data/wiki.json` to define your wiki's series, categories, and article organization.
 
-For example, the configuration can specify:
+The configuration determines:
 
 - The default series shown when visitors open the website.
 - The available series and their display names.
 - The categories available across the wiki.
-- Which article IDs belong to each category within each series.
+- Which articles belong to each category within each series.
+- The language and visual theme assigned to each series.
 
-Articles are associated with a series, and the JSON configuration determines where they appear in the wiki's navigation.
+Example:
 
-When adding a new article, create its Markdown file and update the JSON configuration so the article appears in the appropriate category.
+```json
+{
+  "defaultSeries": "pleasantville",
+  "categories": [
+    {
+      "id": "characters",
+      "name": "Characters"
+    },
+    {
+      "id": "locations",
+      "name": "Locations"
+    },
+    {
+      "id": "events",
+      "name": "Events"
+    },
+    {
+      "id": "stories",
+      "name": "Stories"
+    },
+    {
+      "id": "chapter-summaries",
+      "name": "Chapter Summaries"
+    }
+  ],
+  "series": [
+    {
+      "id": "pleasantville",
+      "name": "Pleasantville",
+      "theme": "pleasantville",
+      "language": "pt",
+      "categories": {
+        "characters": ["char-giraffe"],
+        "locations": [],
+        "events": ["pv-event-01"],
+        "stories": [],
+        "chapter-summaries": []
+      }
+    },
+    {
+      "id": "strange-animals",
+      "name": "Strange Animals",
+      "theme": "strange-animals",
+      "language": "en",
+      "categories": {
+        "characters": [],
+        "locations": ["sa-forest"],
+        "events": [],
+        "stories": ["sa-story-01"],
+        "chapter-summaries": []
+      }
+    }
+  ]
+}
+```
+
+Each article ID listed in a series must correspond to an existing Markdown article.
+
+Categories can be shared across multiple series, but each series maintains its own article lists.
+
+**Empty categories are automatically hidden.** Categories without articles will not appear on the homepage or in the Explore navigation dropdown. This allows different series to use different categories without displaying unnecessary empty links.
+
+When adding a new article:
+
+1. Create its Markdown file in the appropriate series folder.
+2. Give it a unique article ID.
+3. Add its ID to the appropriate category in `wiki.json`.
 
 ### 3. Adding Images
 
-Place article images in the project's public assets directory and reference them in the Markdown frontmatter.
+Place images in the project's `public/images/` directory.
+
+Article images are organized by series, while generic images are shared across the entire wiki.
+
+Example folder structure:
+
+```text
+public/
+└── images/
+    ├── pleasantville/
+    │   └── char-giraffe.jpg
+    ├── strange-animals/
+    │   └── sa-snake.jpg
+    └── generic/
+        ├── picture-not-available.png
+        └── flags/
+            ├── united-kingdom.svg
+            └── portugal.svg
+```
+
+To associate an image with an article, specify its filename inside the article's `infobox`:
+
+```yaml
+infobox:
+  Name: Giraffe
+  image: char-giraffe.jpg
+  Species: Plush
+```
+
+Article images are loaded from the corresponding series image folder.
+
+If an article does not specify an image, or its image cannot be loaded, the wiki uses the generic fallback picture defined in `wiki.json`.
+
+### 4. Customizing Themes
+
+Each series can have its own visual theme.
+
+Themes are defined through CSS files inside:
+
+```text
+src/
+└── themes/
+    ├── pleasantville.css
+    └── strange-animals.css
+```
+
+To assign a theme to a series, add the `theme` property to its entry in `wiki.json`:
+
+```json
+{
+  "id": "pleasantville",
+  "name": "Pleasantville",
+  "theme": "pleasantville"
+}
+```
+
+The theme name must match the corresponding CSS filename, without the `.css` extension.
 
 For example:
 
-```yaml
-image: /images/series-a/alice.jpg
+- `pleasantville` loads `pleasantville.css`.
+- `strange-animals` loads `strange-animals.css`.
+
+Theme styles should be scoped to their respective series using the theme class.
+
+For example, in `pleasantville.css`:
+
+```css
+.theme-pleasantville {
+  /* Pleasantville-specific styles */
+}
 ```
 
-### 4. Building for Production
+And in `strange-animals.css`:
+
+```css
+.theme-strange-animals {
+  /* Strange Animals-specific styles */
+}
+```
+
+Shared layout styles should remain in the main stylesheet, while series-specific colors, backgrounds, typography, and other visual customizations belong in their respective theme files.
+
+### 5. Configuring Languages and Translations
+
+Each series can have its own interface language.
+
+The language is assigned through the `language` property in `wiki.json`:
+
+```json
+{
+  "id": "pleasantville",
+  "name": "Pleasantville",
+  "language": "pt"
+}
+```
+
+The available languages and their translations are defined in the `generic.translations` section of `wiki.json`.
+
+Each language entry contains:
+
+- `languageId` — The language identifier used by series.
+- `languageName` — The language's display name.
+- `flag` — The path to its SVG flag image.
+- `categories` — Translations for category names.
+- `staticText` — Translations for interface labels and messages.
+
+Example:
+
+```json
+{
+  "generic": {
+    "defaultLanguage": "en",
+    "translations": [
+      {
+        "languageId": "en",
+        "languageName": "English",
+        "flag": "/images/generic/flags/united-kingdom.svg",
+        "categories": [
+          {
+            "id": "characters",
+            "text": "Characters"
+          },
+          {
+            "id": "locations",
+            "text": "Locations"
+          }
+        ],
+        "staticText": [
+          {
+            "id": "welcome",
+            "text": "Welcome to {name} Wiki"
+          },
+          {
+            "id": "explore",
+            "text": "Explore this series"
+          },
+          {
+            "id": "main-page",
+            "text": "Main page"
+          },
+          {
+            "id": "contents",
+            "text": "Contents"
+          }
+        ]
+      },
+      {
+        "languageId": "pt",
+        "languageName": "Português",
+        "flag": "/images/generic/flags/portugal.svg",
+        "categories": [
+          {
+            "id": "characters",
+            "text": "Personagens"
+          },
+          {
+            "id": "locations",
+            "text": "Lugares"
+          }
+        ],
+        "staticText": [
+          {
+            "id": "welcome",
+            "text": "Bem-vindo à Wiki de {name}!"
+          },
+          {
+            "id": "explore",
+            "text": "Explora esta série"
+          },
+          {
+            "id": "main-page",
+            "text": "Página principal"
+          },
+          {
+            "id": "contents",
+            "text": "Índice"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+This is a shortened example. Each language should contain translations for all the interface labels and categories used by the wiki.
+
+The `defaultLanguage` property determines which language is used when a series does not specify a language or when a translation is unavailable.
+
+**Translations apply to the wiki interface**, including navigation, category names, headings, and system messages. Article titles, descriptions, and Markdown content remain as originally written.
+
+Article IDs and URL paths also remain unchanged when switching languages. This keeps links consistent regardless of the selected interface language.
+
+#### Adding Another Language
+
+To add a language:
+
+1. Add its SVG flag to `public/images/generic/flags/`.
+2. Add a new language entry to `generic.translations` in `wiki.json`.
+3. Provide its category and interface translations.
+4. Assign its `languageId` to the appropriate series using the `language` property.
+
+No changes to the React components are necessary when adding additional languages.
+
+### 6. Building for Production
 
 When you're ready to build the website for deployment, run:
 
@@ -174,3 +458,7 @@ Minimalist-Wiki intentionally avoids features that add complexity to content man
 - Online article editing
 
 This keeps the project straightforward to understand, customize, and maintain.
+
+## License
+
+See the repository's license file for details.

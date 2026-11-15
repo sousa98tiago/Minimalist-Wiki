@@ -92,14 +92,19 @@ export default function WikiLayout() {
               <div className="dropdown-menu">
                 <Link to={`/series/${currentSeries.id}`}>{t("main-page")}</Link>
 
-                {wiki.categories.map((item) => (
-                  <Link
-                    key={item.id}
-                    to={`/series/${currentSeries.id}/categories/${item.id}`}
-                  >
-                    {category(item.id)}
-                  </Link>
-                ))}
+                {wiki.categories
+                  .filter((item) => {
+                    const entries = currentSeries.categories?.[item.id] ?? [];
+                    return entries.length > 0;
+                  })
+                  .map((item) => (
+                    <Link
+                      key={item.id}
+                      to={`/series/${currentSeries.id}/categories/${item.id}`}
+                    >
+                      {category(item.id)}
+                    </Link>
+                  ))}
               </div>
             </div>
           </nav>
