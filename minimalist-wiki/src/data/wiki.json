@@ -1,66 +1,7 @@
 {
   "generic": {
     "defaultPicture": "picture-not-available.png",
-    "defaultLanguage": "en",
-    "translations": [
-      {
-        "languageId": "en",
-        "languageName": "English",
-        "flag": "united-kingdom.svg",
-        "categories": [
-          { "id": "characters", "text": "Characters" },
-          { "id": "locations", "text": "Locations" },
-          { "id": "events", "text": "Events" },
-          { "id": "stories", "text": "Stories" },
-          { "id": "chapter-summaries", "text": "Chapter Summaries" }
-        ],
-        "staticText": [
-          { "id": "welcome", "text": "Welcome to {name} Wiki" },
-          { "id": "explore", "text": "Explore this series" },
-          { "id": "series-not-found", "text": "Series not found." },
-          { "id": "page-not-found", "text": "Page not found." },
-          { "id": "article-not-found", "text": "Article not found." },
-          { "id": "no-entries", "text": "No entries in this category yet." },
-          { "id": "contents", "text": "Contents" },
-          { "id": "bio", "text": "Bio" },
-          { "id": "information", "text": "Information" },
-          { "id": "classification", "text": "Classification" },
-          { "id": "type", "text": "Type" },
-          { "id": "series", "text": "Series" },
-          { "id": "main-page", "text": "Main page" }
-        ]
-      },
-      {
-        "languageId": "pt",
-        "languageName": "Português",
-        "flag": "portugal.svg",
-        "categories": [
-          { "id": "characters", "text": "Personagens" },
-          { "id": "locations", "text": "Lugares" },
-          { "id": "events", "text": "Eventos" },
-          { "id": "stories", "text": "Histórias" },
-          { "id": "chapter-summaries", "text": "Resumos de Capítulos" }
-        ],
-        "staticText": [
-          { "id": "welcome", "text": "Bem-vindo à Wiki de {name}!" },
-          { "id": "explore", "text": "Explora esta série" },
-          { "id": "series-not-found", "text": "Série não encontrada." },
-          { "id": "page-not-found", "text": "Página não encontrada." },
-          { "id": "article-not-found", "text": "Artigo não encontrado." },
-          {
-            "id": "no-entries",
-            "text": "Ainda não existem registos nesta categoria."
-          },
-          { "id": "contents", "text": "Índice" },
-          { "id": "bio", "text": "Biografia" },
-          { "id": "information", "text": "Informações" },
-          { "id": "classification", "text": "Classificação" },
-          { "id": "type", "text": "Tipo" },
-          { "id": "series", "text": "Séries" },
-          { "id": "main-page", "text": "Página principal" }
-        ]
-      }
-    ]
+    "defaultLanguage": "en"
   },
   "defaultSeries": "pleasantville",
   "categories": [
@@ -75,7 +16,7 @@
       "id": "pleasantville",
       "name": "Pleasantville",
       "theme": "pleasantville",
-      "language": "pt",
+      "language": "en",
       "description": "Pleasantville is a wholesome place with a variety of interesting creatures. Visitors often describe it as a community rather than a city for a reason. Everyone there is friendly, tolerant, and kind.",
       "categories": {
         "characters": ["char-giraffe"],
@@ -92,7 +33,19 @@
       "categories": {
         "characters": ["char-snake", "char-invisible-giraffe"],
         "locations": [],
-        "events": ["invisible-giraffe-story"]
+        "summaries": ["invisible-giraffe-story"]
+      }
+    },
+    {
+      "id": "fox-and-wolf",
+      "name": "Fox & Wolf",
+      "theme": "fox-and-wolf",
+      "language": "pt",
+      "description": "Fox & Wolf é um drama romântico sobre um homem amargo que se apaixona por uma mulher misteriosa, que recusa a divulgar qualquer informação sobre si mesma.",
+      "categories": {
+        "characters": ["fox", "wolf", "rebecca"],
+        "locations": [],
+        "summaries": ["fox-and-wolf-plot"]
       }
     }
   ]

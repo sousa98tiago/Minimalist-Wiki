@@ -17,6 +17,7 @@ The result is a lightweight, clean, and easy-to-manage website focused on what m
 - **Automatic category filtering** — Only display categories containing at least one article in the active series, both on the homepage and in the navigation dropdown.
 - **Automatic table of contents** — Generate clickable contents lists from article headings.
 - **Article infoboxes** — Display structured information, such as character details, alongside article content, including optional images.
+- **Internal article links** — Link between articles using a simple custom Markdown syntax based on article IDs.
 - **Fallback images** — Automatically use a generic placeholder when an article does not have an associated image.
 - **Minimalist design** — A clean interface with little visual clutter, keeping the focus on the content.
 - **No backend required** — Content is stored locally in the project files and bundled into the website.
@@ -104,15 +105,11 @@ Giraffe is a plush creature covered entirely in soft fur, with an exceptionally 
 
 ## Personality
 
-Giraffe is deeply empathetic, compassionate, and emotionally intelligent, making her an exceptional listener who easily connects with others. She has a warm, affectionate communication style, often giving people endearing nicknames such as "friend," "buddy," or affectionate shortened variants of their names (e.g., "Lily" for Lisa or Elisabeth, and "Lulu" for Lucas).
-
-However, she struggles significantly with organization. Due to poor planning and a tendency to become easily distracted, she frequently misses appointments, arrives late, and is too embarrassed by the perpetual mess in her home to ever invite guests over.
+Giraffe is deeply empathetic, compassionate, and emotionally intelligent, making her an exceptional listener who easily connects with others.
 
 ## Background & Life
 
-Working as a waitress in a pastry shop, Giraffe enjoys her day-to-day employment, though she frequently dreams of a higher education. She aspires to return to school to earn a degree in either Literature or History.
-
-Her home life is shared with her pet Parson Russell Terrier named **Bobby**.
+Working as a waitress in a pastry shop, Giraffe enjoys her day-to-day employment.
 
 ## Trivia
 
@@ -131,7 +128,37 @@ Article metadata supports:
 
 The `image` property belongs inside `infobox` and contains the image filename, not the full path.
 
-### 2. Organizing the Wiki
+### 2. Linking Between Articles
+
+You can link directly to another article within the same series using the custom wiki-link syntax.
+
+The format is:
+
+```markdown
+[[article-id|displayed text]]
+```
+
+For example, if you want to link to Giraffe from another article:
+
+```markdown
+The shop is also [[char-giraffe|Giraffe's]] workplace.
+```
+
+The text after the `|` separator is what visitors see and click. The article ID before the separator determines the destination.
+
+When clicked, the link takes visitors to the corresponding article within the current series.
+
+**Important:**
+
+- Use the target article's exact ID from its YAML frontmatter.
+- The target article must belong to the same series as the article containing the link.
+- You can use any text as the displayed link label.
+- Article IDs and URLs remain unchanged when switching interface languages.
+- If the target article cannot be found, the displayed text is shown without an active link.
+
+This makes it easy to connect characters, locations, events, and other related content without manually writing URLs.
+
+### 3. Organizing the Wiki
 
 Use `src/data/wiki.json` to define your wiki's series, categories, and article organization.
 
@@ -213,7 +240,7 @@ When adding a new article:
 2. Give it a unique article ID.
 3. Add its ID to the appropriate category in `wiki.json`.
 
-### 3. Adding Images
+### 4. Adding Images
 
 Place images in the project's `public/images/` directory.
 
@@ -248,7 +275,7 @@ Article images are loaded from the corresponding series image folder.
 
 If an article does not specify an image, or its image cannot be loaded, the wiki uses the generic fallback picture defined in `wiki.json`.
 
-### 4. Customizing Themes
+### 5. Customizing Themes
 
 Each series can have its own visual theme.
 
@@ -298,7 +325,7 @@ And in `strange-animals.css`:
 
 Shared layout styles should remain in the main stylesheet, while series-specific colors, backgrounds, typography, and other visual customizations belong in their respective theme files.
 
-### 5. Configuring Languages and Translations
+### 6. Configuring Languages and Translations
 
 Each series can have its own interface language.
 
@@ -312,7 +339,7 @@ The language is assigned through the `language` property in `wiki.json`:
 }
 ```
 
-The available languages and their translations are defined in the `generic.translations` section of `wiki.json`.
+The available languages and their translations are defined in `translations.json`.
 
 Each language entry contains:
 
@@ -325,79 +352,74 @@ Each language entry contains:
 Example:
 
 ```json
-{
-  "generic": {
-    "defaultLanguage": "en",
-    "translations": [
+[
+  {
+    "languageId": "en",
+    "languageName": "English",
+    "flag": "/images/generic/flags/united-kingdom.svg",
+    "categories": [
       {
-        "languageId": "en",
-        "languageName": "English",
-        "flag": "/images/generic/flags/united-kingdom.svg",
-        "categories": [
-          {
-            "id": "characters",
-            "text": "Characters"
-          },
-          {
-            "id": "locations",
-            "text": "Locations"
-          }
-        ],
-        "staticText": [
-          {
-            "id": "welcome",
-            "text": "Welcome to {name} Wiki"
-          },
-          {
-            "id": "explore",
-            "text": "Explore this series"
-          },
-          {
-            "id": "main-page",
-            "text": "Main page"
-          },
-          {
-            "id": "contents",
-            "text": "Contents"
-          }
-        ]
+        "id": "characters",
+        "text": "Characters"
       },
       {
-        "languageId": "pt",
-        "languageName": "Português",
-        "flag": "/images/generic/flags/portugal.svg",
-        "categories": [
-          {
-            "id": "characters",
-            "text": "Personagens"
-          },
-          {
-            "id": "locations",
-            "text": "Lugares"
-          }
-        ],
-        "staticText": [
-          {
-            "id": "welcome",
-            "text": "Bem-vindo à Wiki de {name}!"
-          },
-          {
-            "id": "explore",
-            "text": "Explora esta série"
-          },
-          {
-            "id": "main-page",
-            "text": "Página principal"
-          },
-          {
-            "id": "contents",
-            "text": "Índice"
-          }
-        ]
+        "id": "locations",
+        "text": "Locations"
+      }
+    ],
+    "staticText": [
+      {
+        "id": "welcome",
+        "text": "Welcome to {name} Wiki"
+      },
+      {
+        "id": "explore",
+        "text": "Explore this series"
+      },
+      {
+        "id": "main-page",
+        "text": "Main page"
+      },
+      {
+        "id": "contents",
+        "text": "Contents"
+      }
+    ]
+  },
+  {
+    "languageId": "pt",
+    "languageName": "Português",
+    "flag": "/images/generic/flags/portugal.svg",
+    "categories": [
+      {
+        "id": "characters",
+        "text": "Personagens"
+      },
+      {
+        "id": "locations",
+        "text": "Lugares"
+      }
+    ],
+    "staticText": [
+      {
+        "id": "welcome",
+        "text": "Bem-vindo à Wiki de {name}!"
+      },
+      {
+        "id": "explore",
+        "text": "Explora esta série"
+      },
+      {
+        "id": "main-page",
+        "text": "Página principal"
+      },
+      {
+        "id": "contents",
+        "text": "Índice"
       }
     ]
   }
-}
+]
 ```
 
 This is a shortened example. Each language should contain translations for all the interface labels and categories used by the wiki.
@@ -413,13 +435,13 @@ Article IDs and URL paths also remain unchanged when switching languages. This k
 To add a language:
 
 1. Add its SVG flag to `public/images/generic/flags/`.
-2. Add a new language entry to `generic.translations` in `wiki.json`.
+2. Add a new language entry to `translations.json`.
 3. Provide its category and interface translations.
 4. Assign its `languageId` to the appropriate series using the `language` property.
 
 No changes to the React components are necessary when adding additional languages.
 
-### 6. Building for Production
+### 7. Building for Production
 
 When you're ready to build the website for deployment, run:
 
@@ -444,6 +466,7 @@ The generated static site can be deployed to a static hosting provider that supp
 - [React Router](https://reactrouter.com/) — Client-side navigation
 - [React Markdown](https://github.com/remarkjs/react-markdown) — Markdown rendering
 - [remark-gfm](https://github.com/remarkjs/remark-gfm) — GitHub Flavored Markdown support
+- Custom remark plugin — Converts internal wiki-link syntax into navigable article links
 - [YAML](https://eemeli.org/yaml/) — Parsing article metadata
 
 ## What This Template Doesn't Include

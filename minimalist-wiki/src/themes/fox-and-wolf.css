@@ -1,0 +1,152 @@
+/* =========================================
+   FOX AND WOLF — AUTUMN LITERARY THEME
+   ========================================= */
+
+.wiki.theme-fox-and-wolf {
+  --theme-background: #bd7138;
+  --theme-surface: #fff8ed;
+  --theme-text: #45372e;
+  --theme-heading: #753d27;
+  --theme-muted: #766456;
+  --theme-link: #a34f2d;
+  --theme-border: #e6d3bd;
+  --theme-menu: #fff8ed;
+  --theme-menu-border: #d9b99a;
+  --theme-menu-hover: #f1dfca;
+
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--theme-text);
+  background: var(--theme-background);
+  min-height: 100vh;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.wiki.theme-fox-and-wolf .wiki-header {
+  background: #9f542d;
+  color: #fff8ed;
+  border-bottom: 3px solid #713c28;
+}
+
+.wiki.theme-fox-and-wolf .wiki-title {
+  color: #fff8ed;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+
+.wiki.theme-fox-and-wolf .dropdown-toggle {
+  color: #fff8ed;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.wiki.theme-fox-and-wolf .dropdown-toggle:hover,
+.wiki.theme-fox-and-wolf .dropdown:focus-within .dropdown-toggle {
+  background: rgba(255, 248, 237, 0.15);
+}
+
+/* =========================================
+   NAVIGATION DROPDOWNS
+   ========================================= */
+
+.wiki.theme-fox-and-wolf .dropdown-menu {
+  background: var(--theme-menu);
+  border-color: var(--theme-menu-border);
+  box-shadow: 0 5px 14px rgba(75, 42, 25, 0.15);
+}
+
+.wiki.theme-fox-and-wolf .dropdown-menu a {
+  color: var(--theme-text);
+}
+
+.wiki.theme-fox-and-wolf .dropdown-menu a:hover,
+.wiki.theme-fox-and-wolf .dropdown-menu a:focus-visible {
+  background: var(--theme-menu-hover);
+  color: #753d27;
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.wiki.theme-fox-and-wolf .wiki-content {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  border-color: #e6d3bd;
+}
+
+.wiki.theme-fox-and-wolf .wiki-content h2,
+.wiki.theme-fox-and-wolf .wiki-content h3 {
+  color: var(--theme-heading);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.wiki.theme-fox-and-wolf .wiki-content h2 {
+  letter-spacing: 0.3px;
+}
+
+.wiki.theme-fox-and-wolf .wiki-content h3 {
+  border-bottom-color: var(--theme-border);
+}
+
+.wiki.theme-fox-and-wolf .wiki-content p {
+  color: var(--theme-muted);
+  line-height: 1.8;
+}
+
+.wiki.theme-fox-and-wolf .wiki-content a,
+.wiki.theme-fox-and-wolf .article-toc a {
+  color: var(--theme-link);
+}
+
+.wiki.theme-fox-and-wolf .wiki-content a:hover,
+.wiki.theme-fox-and-wolf .article-toc a:hover {
+  color: #713c28;
+}
+
+/* =========================================
+   ARTICLE TABLE OF CONTENTS
+   ========================================= */
+
+.wiki.theme-fox-and-wolf .article-toc {
+  background: #f5e5d1;
+  border: 1px solid #e5c9a9;
+  color: #45372e;
+}
+
+.wiki.theme-fox-and-wolf .article-toc a {
+  color: #8d492c;
+}
+
+/* =========================================
+   ARTICLE TEXT
+   ========================================= */
+
+.wiki.theme-fox-and-wolf .article-introduction,
+.wiki.theme-fox-and-wolf .article-body,
+.wiki.theme-fox-and-wolf .article-body p {
+  color: #45372e;
+  line-height: 1.85;
+}
+
+.wiki.theme-fox-and-wolf .article-body h2,
+.wiki.theme-fox-and-wolf .article-body h3 {
+  color: #753d27;
+}
+
+/* =========================================
+   DECORATIVE DETAILS
+   ========================================= */
+
+.wiki.theme-fox-and-wolf .wiki-content strong {
+  color: #753d27;
+}
+
+.wiki.theme-fox-and-wolf .wiki-content blockquote {
+  border-left: 3px solid #bd7138;
+  padding-left: 1rem;
+  color: #766456;
+  font-style: italic;
+}

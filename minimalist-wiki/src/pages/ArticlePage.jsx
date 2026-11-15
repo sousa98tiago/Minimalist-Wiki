@@ -1,10 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { defaultUrlTransform } from "react-markdown";
 
 import wikiData from "../data/wiki.json";
 import { getArticle } from "../data/articles";
 import { getTranslator } from "../data/translations";
+import { remarkWikiLinks } from "../data/remarkWikiLinks";
 
 function slugify(text) {
   return text
@@ -133,8 +135,38 @@ export default function ArticlePage() {
       )}
 
       <div className="article-introduction">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {introduction}
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkWikiLinks]}
+          urlTransform={(url) =>
+            url.startsWith("wiki-article:") ? url : defaultUrlTransform(url)
+          }
+          components={{
+            a: ({ href, children, ...props }) => {
+              if (href?.startsWith("wiki-article:")) {
+                const targetId = href.replace("wiki-article:", "");
+
+                const targetArticle = getArticle(series.id, targetId);
+
+                if (!targetArticle) {
+                  return <span>{children}</span>;
+                }
+
+                return (
+                  <Link to={`/series/${series.id}/articles/${targetId}`}>
+                    {children}
+                  </Link>
+                );
+              }
+
+              return (
+                <a href={href} {...props}>
+                  {children}
+                </a>
+              );
+            },
+          }}
+        >
+          {article.content}
         </ReactMarkdown>
       </div>
 

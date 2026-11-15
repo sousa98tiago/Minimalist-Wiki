@@ -1,13 +1,14 @@
 import wiki from "./wiki.json";
+import translations from "./translations.json";
 
 export function getTranslator(languageId) {
   const defaultLanguage = wiki.generic.defaultLanguage;
 
-  const selectedTranslations = wiki.generic.translations.find(
+  const selectedTranslations = translations.find(
     (item) => item.languageId === languageId,
   );
 
-  const fallbackTranslations = wiki.generic.translations.find(
+  const fallbackTranslations = translations.find(
     (item) => item.languageId === defaultLanguage,
   );
 
