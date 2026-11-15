@@ -8,7 +8,8 @@
       { "id": "locations", "text": "Locations" },
       { "id": "events", "text": "Events" },
       { "id": "stories", "text": "Stories" },
-      { "id": "summaries", "text": "Summaries" }
+      { "id": "summaries", "text": "Summaries" },
+      { "id": "themes", "text": "Themes" }
     ],
     "staticText": [
       { "id": "welcome", "text": "Welcome to {name} Wiki" },
@@ -35,7 +36,8 @@
       { "id": "locations", "text": "Lugares" },
       { "id": "events", "text": "Eventos" },
       { "id": "stories", "text": "Histórias" },
-      { "id": "summaries", "text": "Resumos" }
+      { "id": "summaries", "text": "Resumos" },
+      { "id": "themes", "text": "Temas" }
     ],
     "staticText": [
       { "id": "welcome", "text": "Bem-vindo à Wiki de {name}!" },

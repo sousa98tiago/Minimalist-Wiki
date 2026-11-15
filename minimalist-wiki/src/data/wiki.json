@@ -9,7 +9,8 @@
     { "id": "locations" },
     { "id": "events" },
     { "id": "stories" },
-    { "id": "chapter-summaries" }
+    { "id": "summaries" },
+    { "id": "themes" }
   ],
   "series": [
     {
@@ -41,10 +42,10 @@
       "name": "Fox & Wolf",
       "theme": "fox-and-wolf",
       "language": "pt",
-      "description": "Fox & Wolf é um drama romântico sobre um homem amargo que se apaixona por uma mulher misteriosa, que recusa a divulgar qualquer informação sobre si mesma.",
+      "description": "Fox & Wolf é um drama romântico sobre duas pessoas que desenvolvem uma relação pouco convencional, marcada por intimidade, desejo e expectativas incompatíveis. Richard, um homem solitário e emocionalmente desgastado, aproxima-se de Fox, uma mulher independente e reservada que não procura o mesmo tipo de ligação que ele. Entre momentos de ternura, humor, cumplicidade e frustração, a história explora as ambiguidades das relações modernas e a distância entre gostar de alguém e querer construir uma vida com essa pessoa.",
       "categories": {
         "characters": ["fox", "wolf", "rebecca"],
-        "locations": [],
+        "themes": ["reciprocity", "attachment", "maturity"],
         "summaries": ["fox-and-wolf-plot"]
       }
     }
