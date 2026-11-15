@@ -90,7 +90,6 @@ export default function ArticlePage() {
     ...heading,
     id: slugify(heading.title),
   }));
-
   return (
     <main className="wiki-content article-page">
       <div className="article-breadcrumb">
@@ -166,7 +165,7 @@ export default function ArticlePage() {
             },
           }}
         >
-          {article.content}
+          {introduction}
         </ReactMarkdown>
       </div>
 
@@ -188,7 +187,7 @@ export default function ArticlePage() {
 
       <div className="article-body">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkWikiLinks]}
           components={{
             h2: ({ children, ...props }) => {
               const id = slugify(getHeadingText(children));

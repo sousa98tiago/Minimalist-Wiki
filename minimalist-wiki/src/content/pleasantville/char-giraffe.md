@@ -10,7 +10,7 @@ infobox:
   Age: 30
 ---
 
-**Giraffe** is an inhabitant of Pleasantville who works as a waitress at a local pastry shop.
+**Giraffe** is an inhabitant of Pleasantville who works as a waitress at a local [[pv-cafe|pastry shop]].
 
 ## Appearance
 

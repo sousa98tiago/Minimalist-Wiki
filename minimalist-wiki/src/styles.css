@@ -310,6 +310,11 @@ a:hover {
   clear: none;
 }
 
+.article-introduction p,
+.article-body p {
+  text-align: justify;
+}
+
 /* ========================================
    Article table of contents
 ======================================== */

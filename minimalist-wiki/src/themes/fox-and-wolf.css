@@ -5,7 +5,7 @@
 .wiki.theme-fox-and-wolf {
   --theme-background: #bd7138;
   --theme-surface: #fff8ed;
-  --theme-text: #45372e;
+  --theme-text: #030303;
   --theme-heading: #753d27;
   --theme-muted: #766456;
   --theme-link: #a34f2d;
@@ -25,9 +25,8 @@
    ========================================= */
 
 .wiki.theme-fox-and-wolf .wiki-header {
-  background: #9f542d;
-  color: #fff8ed;
-  border-bottom: 3px solid #713c28;
+  background: var(--theme-background);
+  color: #ffffff;
 }
 
 .wiki.theme-fox-and-wolf .wiki-title {
